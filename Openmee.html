@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What if?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf1f1;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    #questionSection, #responseText {
+      display: none;
+      margin-top: 30px;
+    }
+    #responseText {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 50px;
+      color: #444;
+      transition: opacity 1s ease;
+    }
+    #playerContainer {
+      display: none;
+      justify-content: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>What if?</h1>
+  <button id="startButton">Click Me</button>
+
+  <div id="questionSection">
+    <h2>Mahal mo pa siya?</h2>
+    <button onclick="chooseAnswer('oo')">Oo</button>
+    <button onclick="chooseAnswer('hindi')">Hindi</button>
+  </div>
+
+  <div id="responseText"></div>
+
+  <div id="playerContainer">
+    <audio id="player" controls></audio>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById("startButton");
+    const questionSection = document.getElementById("questionSection");
+    const responseText = document.getElementById("responseText");
+    const audioPlayer = document.getElementById("player");
+    const playerContainer = document.getElementById("playerContainer");
+
+    startBtn.addEventListener("click", () => {
+      startBtn.style.display = "none";
+      questionSection.style.display = "block";
+    });
+
+    function chooseAnswer(answer) {
+      questionSection.style.display = "none";
+      playerContainer.style.display = "flex";
+
+      if (answer === "hindi") {
+        responseText.innerText = "What if Hindi mo kayang Bitawan kaya minumulto ka na niya lagi";
+        audioPlayer.src = "Multo - Cup of Joe (Official Lyric Video).mp3";
+      } else {
+        responseText.innerText = "Akala moy naka Move on kana pero Nag Paka Tanga ka lng pala.";
+        audioPlayer.src = "Hindi Tayo Pwede (Live at The Cozy Cove) - The Juans.mp3";
+      }
+
+      responseText.style.display = "block";
+      audioPlayer.play();
+    }
+  </script>
+
+</body>
+</html>
